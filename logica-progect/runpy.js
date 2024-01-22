@@ -1,13 +1,20 @@
-const { exec } = require('child_process');
+document.addEventListener('DOMContentLoaded', function() {
+    // Отримайте посилання на кнопку
+    var startButton = document.getElementById('startButton');
 
-// Замініть 'your_python_file.py' на шлях до вашого Python файлу
-const pythonFilePath = 'main.py';
+    // Додайте обробник подій для натискання кнопки
+    startButton.addEventListener('click', function() {
+        // Тут можна викликати код, який ви хочете виконати при натисканні кнопки
+        // Наприклад, викликати Python-програму через використання AJAX або fetch
 
-// Використовуйте команду для запуску Python файлу
-exec(`python ${pythonFilePath}`, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Помилка при виконанні Python файлу: ${error}`);
-    return;
-  }
-  console.log(`Вивід Python файлу: ${stdout}`);
+        // Приклад виклику Python-скрипта через fetch:
+        fetch('runPythonScript.php') // Замініть на шлях до вашого серверного скрипта
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Вивести вивід Python-програми у консоль
+            })
+            .catch(error => {
+                console.error('Помилка:', error);
+            });
+    });
 });
