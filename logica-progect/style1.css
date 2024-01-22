@@ -1,3 +1,4 @@
 body{
   backround-color: rgb(12, 78, 92);
+  backround-image: image("image1.png");
 }
